@@ -12,6 +12,7 @@ def load_results(file_path):
             gt.append(result['reference_answer'])
     return pred, gt
 
+# Evaluate Qwen inference by Bert Score with Precision, Recall and F1 metrics
 def bertScore(pred, gt):
     P, R, F1 = score(pred, gt, lang="en", verbose=True)
     precision = P.mean().item()

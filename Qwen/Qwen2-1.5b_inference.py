@@ -9,6 +9,7 @@ import torch
 sys.path.append(os.path.join(os.path.dirname(__file__), 'data'))
 from Huggingface_dataloader import dataLoader
 
+# Load Qwen2-1.5b model from huggingface hub
 class QwenInference:
     def __init__(self, model_name="Qwen/Qwen2-1.5B"):
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
