@@ -59,16 +59,13 @@ def main():
     cfg = Config(args)
     setup_seeds(cfg)
 
-    conv_dict = {'pretrain_vicuna0': CONV_VISION_Vicuna0,
-                 'pretrain_llama2': CONV_VISION_LLama2}
-
     print('Initializing Chat')
     model_config = cfg.model_cfg
     model_config.device_8bit = args.gpu_id
     model_cls = registry.get_model_class(model_config.arch)
     model = model_cls.from_config(model_config).to('cuda:{}'.format(args.gpu_id))
-
-    CONV_VISION = conv_dict[model_config.model_type]
+    model.generation_config.pad_token_id = 0
+    CONV_VISION = CONV_VISION_Vicuna0
 
     vis_processor_cfg = cfg.datasets_cfg.cc_sbu_align.vis_processor.train
     vis_processor = registry.get_processor_class(vis_processor_cfg.name).from_config(vis_processor_cfg)
@@ -102,13 +99,17 @@ def main():
                              img_list=[image_id],
                              num_beams=1,
                              temperature=1.0,
-                             max_new_tokens=300,
-                             max_length=2000)[0]
+                             max_new_tokens=10,
+                             max_length=100)[0]
+        
+                # Simplify the answer to "Yes" or "No"
+
+        simplified_answer = "Yes" if "yes" in answer.lower() else "No"
 
         results_by_category[category]['results'].append({
             'image_id': image_id,
             'question': question,
-            'answer': answer
+            'answer': simplified_answer
         })
 
     for category, data in results_by_category.items():
