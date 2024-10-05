@@ -87,4 +87,3 @@ dependencies:
       - webdataset==0.2.48
       - xxhash==3.5.0
       - yarl==1.13.1
-prefix: C:\Users\danpe\anaconda3\envs\MLLM
