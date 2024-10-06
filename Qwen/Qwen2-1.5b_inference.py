@@ -5,9 +5,8 @@ import time
 from transformers import pipeline, AutoTokenizer, AutoModelForCausalLM
 import torch
 
-# Import dataloader from data/
-sys.path.append(os.path.join(os.path.dirname(__file__), 'data'))
-from Huggingface_dataloader import dataLoader
+# Import dataloader from huggingface
+from datasets import load_dataset
 
 # Load Qwen2-1.5b model from huggingface hub
 class QwenInference:
@@ -27,8 +26,7 @@ if __name__ == "__main__":
     total_start_time = time.time()
 
     # Load GSM8K dataset
-    gsm8k_loader = dataLoader('openai/gsm8k', 'main', 'test')
-    gsm8k_data = gsm8k_loader.load_data()
+    gsm8k_data = load_dataset('openai/gsm8k', 'main', 'test')
     qwen_inference = QwenInference()
 
     output_path = r'.\output'

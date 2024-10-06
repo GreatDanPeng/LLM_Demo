@@ -2,7 +2,39 @@
 
 This repository contains implementations for [Qwen2-1.5b](https://github.com/QwenLM/Qwen2.5) on [GSM8K](https://github.com/openai/grade-school-math) (LLM) and [MiniGPT4](https://github.com/Vision-CAIR/MiniGPT-4) on [MME](https://huggingface.co/datasets/lmms-lab/MME) (VLM). Follow the instructions below to set up and run each model separately.
 
-## Table of Contents
+## Performance Table
+**Qwen2-1.5B (GSM8K)**
+| Metric    | BERT Score|
+|-----------|--------|
+| Precision | 0.7982 |
+| Recall    | 0.8506 |
+| F1        | 0.8230 |
+
+**MiniGPT4 (MME)**
+
+### Perception
+| Subcategory       | Acc/Acc+ Score  |
+|-------------------|--------|
+| Color             | 73.33  |
+| Existence         | 66.67  |
+| Scene             | 66.00  |
+| Celebrity         | 59.41  |
+| OCR               | 47.50  |
+| Count             | 41.67  |
+| Posters           | 40.82  |
+| Position          | 38.33  |
+| Artwork           | 35.00  |
+| **Total Score**   | 468.73 |
+
+### Cognition
+| Subcategory              | Acc/Acc+ Score  |
+|--------------------------|--------|
+| Code Reasoning           | 40.00  |
+| Text Translation         | 22.50  |
+| Numerical Calculation    | 15.00  |
+| **Total Score**          | 77.50  |
+
+## Contents
 
 - [General Setup](#general-setup)
 - [Qwen](#qwen)
