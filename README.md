@@ -1,4 +1,4 @@
-# LLM_Demo
+# MLLM_Demo
 
 This repository contains implementations for [Qwen2-1.5b](https://github.com/QwenLM/Qwen2.5) on [GSM8K](https://github.com/openai/grade-school-math) (LLM) and [MiniGPT4](https://github.com/Vision-CAIR/MiniGPT-4) on [MME](https://huggingface.co/datasets/lmms-lab/MME) (VLM). Follow the instructions below to set up and run each model separately.
 
@@ -98,10 +98,15 @@ line8  ckpt: 'your/path/to/prerained_minigpt4_7b.pth'
 
 ### Inference
 
-**Run the Inference Script**:
+**Run the Inference Script (Estimated Running Time: 1.5hrs on a 8GB NVIDIA RTX 3060Ti GPU)**:
    ```sh
    python MiniGPT4_inference.py --cfg-path configs/minigpt4_eval.yaml --gpu-id 0
    ```
+**Evaluation**: \
+The evaluation function is from [MME/eval](https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models/tree/Evaluation) by including both regular accuracy and the acc+ metric, which considers whether both questions in MME dataset for each image were answered correctly.
+```sh
+python MiniGPT4Eval.py
+```
 
 ## License
 
